@@ -1,4 +1,4 @@
-<jsp:useBean id="currentUserName" scope="request" type="java.lang.String"/>
+<%--<jsp:useBean id="currentUserName" scope="request" type="java.lang.String"/>--%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator

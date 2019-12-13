@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="net.suncaper.myapp.common.domain.Student" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -41,7 +42,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-
                 <!-- Content Header (Page header) -->
                 <div class="content-header">
                     <div class="container-fluid">
@@ -49,14 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <%-- <h3 class="card-title">学员列表</h3>--%>
-                                        <ul class="pagination pagination m-0">
-                                            <li class="page-item"><a class="page-link" href="#">上一页</a></li>
-
-                                            <li class="page-item"><a class="page-link" href="javascript:;">2/6</a></li>
-
-                                            <li class="page-item"><a class="page-link" href="#">下一页</a></li>
-                                        </ul>
+                                        <h3 class="card-title">学员列表</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body p-0">
@@ -71,8 +64,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <%--@elvariable id="allStudent" type="java.util.List<net.suncaper.myapp.common.domain.Student>"--%>
-                                            <c:forEach items="${allStudent}" var="stu" varStatus="status">
+                                            <%--@elvariable id="pageInfo" type="net.suncaper.myapp.common.utils.PageInfo"--%>
+                                            <c:forEach items="${pageInfo.data}" var="stu" varStatus="status">
                                                 <tr>
                                                     <td>
                                                             ${status.count}
@@ -95,12 +88,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <!-- /.card-body -->
 
                                     <div class="card-footer clearfix">
-                                        <ul class="pagination pagination-sm m-0 float-right">
-                                            <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">»</a></li>
+                                        <ul class="pagination pagination-sm m-0">
+                                            <c:if test="${!pageInfo.first}">
+                                                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/listStudent?pageNo=${pageInfo.pre}&pageSize=10">上一页</a></li>
+                                            </c:if>
+                                            <li class="page-item"><a class="page-link" href="javascript:;">${pageInfo.pageNo}/${pageInfo.pageCount}</a></li>
+                                            <c:if test="${!pageInfo.last}">
+                                                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/listStudent?pageNo=${pageInfo.next}&pageSize=10">下一页</a></li>
+                                            </c:if>
                                         </ul>
                                     </div>
                                 </div>
@@ -108,8 +103,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>
-
             </div>
+
             <!-- /.content-wrapper -->
 
             <!-- Main Footer -->
