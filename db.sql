@@ -14,3 +14,8 @@ insert into    `user`(name,password) value ('test','test');
 insert into    `user`(name,password) value ('test','test');
 insert into    `user`(name,password) value ('test','test');
 insert into    `user`(name,password) value ('test','test');
+
+show databases;
+
+select * from user
+
