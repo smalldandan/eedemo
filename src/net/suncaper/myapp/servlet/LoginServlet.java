@@ -22,6 +22,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         User userInDb = userService.findUserByName(userName);
+
         if(userInDb==null){
             request.setAttribute("msg","用户不存在!!");
             request.getRequestDispatcher("/views/login.jsp").forward(request,response);
