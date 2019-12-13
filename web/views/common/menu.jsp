@@ -1,3 +1,4 @@
+<jsp:useBean id="currentUserName" scope="request" type="java.lang.String"/>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -28,8 +29,7 @@
                      alt="User Image">
             </div>
             <div class="info">
-
-                <a href="#" class="d-block">${currentUserName}李松林(管理员)</a>
+                <a href="#" class="d-block">${currentUserName}(管理员)</a>
             </div>
         </div>
 
@@ -42,53 +42,39 @@
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            项目管理
+                            学员管理
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="${pageContext.request.contextPath}/listStudent" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>百度</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>腾讯</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="fa fa-fw fa-question"></i>
-                        <p>
-                            预留一级菜单
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>二级</p>
+                                <p>学员查看</p>
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-
-                                <p>
-                                    simple link
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
+
+                <%-- <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                         <i class="fa fa-fw fa-question"></i>
+                         <p>
+                             预留一级菜单
+                             <i class="right fas fa-angle-left"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="#" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>二级</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>--%>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

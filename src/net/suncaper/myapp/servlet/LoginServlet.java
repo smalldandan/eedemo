@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             String pwdDB = userInDb.getPassword();
             if(pwdDB.equals(password)){
                 //OK
-                request.setAttribute("cruuentUserName",userName);
+                request.setAttribute("currentUserName",userName);
                 request.getRequestDispatcher("/views/index.jsp").forward(request,response);
             }else {
                 request.setAttribute("msg","密码错误!");

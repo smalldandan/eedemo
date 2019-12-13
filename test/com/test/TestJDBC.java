@@ -1,5 +1,6 @@
 package com.test;
 
+import net.suncaper.myapp.common.utils.MyDbUtil;
 import org.junit.Test;
 
 import java.sql.*;
@@ -64,4 +65,14 @@ public class TestJDBC {
             }
         }
     }
+
+    @Test
+    public void test2(){
+        String sql = " insert into student(id,name,stuNo,sex) values(?,?,?,?) ";
+        for (int i = 1; i <= 200; i++) {
+            MyDbUtil.executeUpdate(sql,i,"学生"+i,"stuNo"+i,(Math.random()>0.5?"男":"女"));
+        }
+        System.out.println("ok");
+    }
+
 }
