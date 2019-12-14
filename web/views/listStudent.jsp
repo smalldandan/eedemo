@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <tbody>
                                             <%--@elvariable id="pageInfo" type="net.suncaper.myapp.common.utils.PageInfo"--%>
                                             <c:forEach items="${pageInfo.data}" var="stu" varStatus="status">
-                                                <tr>
+                                                <tr id="${stu.id}">
                                                     <td>
                                                             ${status.count}
                                                     </td>
@@ -77,7 +77,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <td> ${stu.sex}</td>
                                                     <td>
                                                         <a type="button" class="btn btn-outline-success btn-xs btn-flat">更改</a>
-                                                        <a type="button"  href="${pageContext.request.contextPath}/delStudent?id=${stu.id}&pageNo=${pageInfo.pageNo}&pageSize=10" class="btn btn-outline-danger btn-xs btn-flat">删除</a>
+<%--                                                        <a type="button"  href="${pageContext.request.contextPath}/delStudent?id=${stu.id}&pageNo=${pageInfo.pageNo}&pageSize=10" class="btn btn-outline-danger btn-xs btn-flat">删除</a>--%>
+                                                        <button class="btn btn-outline-danger btn-xs btn-flat btn_del">删除</button>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -120,5 +121,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script src="${pageContext.request.contextPath}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="${pageContext.request.contextPath}/dist/js/adminlte.min.js"></script>
+        <script>
+            $(function () {
+                $(".btn_del").click(function () {
+                    var $tr = $(this).parents("tr");
+                    var $tdName = $tr.find("td:eq(1)");
+                    var id = $tr.attr("id");
+                    var text = "确认要删除 "+$.trim($tdName.html())+" 吗?"
+                    if(confirm(text)){
+                        window.location.href="${pageContext.request.contextPath}/delStudent?id="+id+"&pageNo=${pageInfo.pageNo}&pageSize=10";
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
