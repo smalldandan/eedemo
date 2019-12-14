@@ -13,8 +13,7 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public List<Student> selectAllStudent() {
         String sql = " select id,name,stuNo,sex from student ";
-        List<Student> allStudent = MyDbUtil.executeQuery(Student.class, sql);
-        return allStudent;
+        return MyDbUtil.executeQuery(Student.class, sql);
     }
 
     //分页显示学生记录
@@ -23,7 +22,7 @@ public class StudentDaoImpl implements StudentDao {
         // 一个方法中同时执行多次SQL 语句: 先获取同一个连接.再用这个连接去执行多个SQL 语句
         Connection conn = MyDbUtil.getConnection();
 
-        PageInfo<Student> rs = null;
+        PageInfo<Student> rs;
 
         String sql1 =" select count(*) 'count' from student ";
         List<CountObject> list = MyDbUtil.executeQuery(conn,CountObject.class,sql1);
@@ -34,7 +33,7 @@ public class StudentDaoImpl implements StudentDao {
         //计算参数并执行sql查询，返回一个 List<Student>
 
         //将 List<Student> 封装成pageInfo<Student>
-        rs = new PageInfo<Student>(pageNo,pageSize,count,students);
+        rs = new PageInfo<>(pageNo, pageSize, count, students);
 
 
         MyDbUtil.closeConnection();
@@ -48,6 +47,7 @@ public class StudentDaoImpl implements StudentDao {
 
         String sql = "delete from student where id = ?";
         int i = MyDbUtil.executeUpdate(sql, id);
+//        返回值是更新的行数，effect rows
         System.out.println(i);
         return i;
 
