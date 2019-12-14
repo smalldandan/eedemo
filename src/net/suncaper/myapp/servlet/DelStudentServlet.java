@@ -19,5 +19,21 @@ public class DelStudentServlet extends HttpServlet {
         String stuId = request.getParameter("id");
         int id = Integer.parseInt(stuId);
         System.out.println(studentService.removeStudentByPrimaryKey(id));
+
+        String pageNoStr = request.getParameter("pageNo");// "2" --> 2
+        String pageSizeStr = request.getParameter("pageSize");
+        int pageNo = 1;
+        int pageSize = 10;
+        if(pageNoStr!=null){
+            pageNo = Integer.parseInt(pageNoStr.trim());
+        }
+        if(pageSizeStr!=null){
+            pageSize = Integer.parseInt(pageSizeStr.trim());
+        }
+
+
+        response.sendRedirect(request.getContextPath()+"/listStudent?pageNo="+pageNo+"&pageSize="+pageSize);
+
+
     }
 }
