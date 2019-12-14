@@ -76,8 +76,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <td>  ${stu.stuNo}</td>
                                                     <td> ${stu.sex}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-outline-success btn-xs btn-flat">更改</button>
-                                                        <button type="button" class="btn btn-outline-danger btn-xs btn-flat">删除</button>
+                                                        <a type="button" class="btn btn-outline-success btn-xs btn-flat">更改</a>
+                                                        <a type="button"  href="${pageContext.request.contextPath}/delStudent?id=${stu.id}" class="btn btn-outline-danger btn-xs btn-flat">删除</a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>

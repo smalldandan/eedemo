@@ -9,4 +9,7 @@ public interface StudentDao {
     List<Student> selectAllStudent();
 
     PageInfo<Student> selectAllStudentByPage(int pageNo, int pageSize);
+
+    int deleteStudentByPrimaryKey(int id);
+
 }

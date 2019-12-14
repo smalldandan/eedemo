@@ -19,5 +19,10 @@ public class StudentServiceImpl implements StudentService {
         return studentDao.selectAllStudentByPage(pageNo,pageSize);
     }
 
+    @Override
+    public int removeStudentByPrimaryKey(int id) {
+        return studentDao.deleteStudentByPrimaryKey(id);
+    }
+
 
 }
