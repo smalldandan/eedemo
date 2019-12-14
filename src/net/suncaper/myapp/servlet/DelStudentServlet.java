@@ -32,6 +32,8 @@ public class DelStudentServlet extends HttpServlet {
         }
 
 
+//        重定向
+//        重定向
         response.sendRedirect(request.getContextPath()+"/listStudent?pageNo="+pageNo+"&pageSize="+pageSize);
 
 
