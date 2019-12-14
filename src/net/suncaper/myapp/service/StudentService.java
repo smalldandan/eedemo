@@ -5,7 +5,7 @@ import net.suncaper.myapp.common.utils.PageInfo;
 
 import java.util.List;
 
-public interface ListStudentService {
+public interface StudentService {
     List<Student> findAllStudent();
     PageInfo<Student> findAllStudentByPage(int pageNo, int pageSize);
 }

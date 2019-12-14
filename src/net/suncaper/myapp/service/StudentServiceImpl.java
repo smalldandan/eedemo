@@ -7,7 +7,7 @@ import net.suncaper.myapp.dao.StudentDaoImpl;
 
 import java.util.List;
 
-public class ListStudentServiceImpl implements ListStudentService {
+public class StudentServiceImpl implements StudentService {
     StudentDao studentDao = new StudentDaoImpl();
     @Override
     public List<Student> findAllStudent() {
