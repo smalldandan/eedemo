@@ -29,7 +29,7 @@
                      alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">${currentUserName}(管理员)</a>
+                <a href="#" class="d-block">${currentUser.name}(管理员)</a>
             </div>
         </div>
 

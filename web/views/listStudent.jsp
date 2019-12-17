@@ -55,29 +55,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-<%--                                                <th>序号</th>--%>
                                                 <th>姓名</th>
                                                 <th>学号</th>
                                                 <th>性别</th>
-                                                <th >操作</th>
+                                                <th>操作</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <%--@elvariable id="pageInfo" type="net.suncaper.myapp.common.utils.PageInfo"--%>
                                             <c:forEach items="${pageInfo.data}" var="stu" varStatus="status">
                                                 <tr id="${stu.id}">
-<%--                                                    <td>--%>
-<%--                                                            ${status.count}--%>
-<%--                                                    </td>--%>
+                                                    <td>${stu.name}</td>
+                                                    <td>${stu.stuNo}</td>
+                                                    <td>${stu.sex}</td>
                                                     <td>
-                                                            ${stu.name}
-                                                    </td>
-                                                    <td>  ${stu.stuNo}</td>
-                                                    <td> ${stu.sex}</td>
-                                                    <td>
-                                                        <button class="btn btn-outline-success btn-xs btn-flat btn_update">更改</button>
-                                                    <%--<a type="button"  href="${pageContext.request.contextPath}/delStudent?id=${stu.id}&pageNo=${pageInfo.pageNo}&pageSize=10" class="btn btn-outline-danger btn-xs btn-flat">删除</a>&ndash;%&gt;--%>
-                                                        <button class="btn btn-outline-danger btn-xs btn-flat btn_del">删除</button>
+                                                        <button class="btn btn-outline-success btn-xs btn-flat btn_update">
+                                                            更改
+                                                        </button>
+                                                        <button class="btn btn-outline-danger btn-xs btn-flat btn_del">
+                                                            删除
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -90,11 +87,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="card-footer clearfix">
                                         <ul class="pagination pagination-sm m-0">
                                             <c:if test="${!pageInfo.first}">
-                                                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/listStudent?pageNo=${pageInfo.pre}&pageSize=10">上一页</a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                                         href="${pageContext.request.contextPath}/listStudent?pageNo=${pageInfo.pre}&pageSize=10">上一页</a>
+                                                </li>
                                             </c:if>
-                                            <li class="page-item"><a class="page-link" href="javascript:;">${pageInfo.pageNo}/${pageInfo.pageCount}</a></li>
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="javascript:;">${pageInfo.pageNo}/${pageInfo.pageCount}</a>
+                                            </li>
                                             <c:if test="${!pageInfo.last}">
-                                                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/listStudent?pageNo=${pageInfo.next}&pageSize=10">下一页</a></li>
+                                                <li class="page-item"><a class="page-link"
+                                                                         href="${pageContext.request.contextPath}/listStudent?pageNo=${pageInfo.next}&pageSize=10">下一页</a>
+                                                </li>
                                             </c:if>
                                         </ul>
                                     </div>
@@ -126,9 +130,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     var $tr = $(this).parents("tr");
                     var $tdName = $tr.find("td:eq(0)");
                     var id = $tr.attr("id");
-                    var text = "确认要删除 "+$.trim($tdName.html())+" 吗?"
-                    if(confirm(text)){
-                        window.location.href="${pageContext.request.contextPath}/delStudent?id="+id+"&pageNo=${pageInfo.pageNo}&pageSize=10";
+                    var text = "确认要删除 " + $.trim($tdName.html()) + " 吗?"
+                    if (confirm(text)) {
+                        window.location.href = "${pageContext.request.contextPath}/delStudent?id=" + id + "&pageNo=${pageInfo.pageNo}&pageSize=10";
                     }
                 });
             });
@@ -138,7 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     var $tr = $(this).parents("tr");
                     var id = $tr.attr("id");
                     console.info(id);
-                    window.location.href="${pageContext.request.contextPath}/toupdatestu?id="+id;
+                    window.location.href = "${pageContext.request.contextPath}/toupdatestu?id=" + id;
 
                 });
             });

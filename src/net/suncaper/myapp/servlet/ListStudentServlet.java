@@ -18,25 +18,20 @@ public class ListStudentServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        List<Student> allStudent = listStudentService.findAllStudentByPage();
-//        super.service(request, response);
-//        for (Student student : allStudent) {
-//            System.out.println(student);
-//        }
 
         String pageNoStr = request.getParameter("pageNo");// "2" --> 2
         String pageSizeStr = request.getParameter("pageSize");
         int pageNo = 1;
         int pageSize = 10;
-        if(pageNoStr!=null){
+        if (pageNoStr != null) {
             pageNo = Integer.parseInt(pageNoStr.trim());
         }
-        if(pageSizeStr!=null){
+        if (pageSizeStr != null) {
             pageSize = Integer.parseInt(pageSizeStr.trim());
         }
         PageInfo<Student> pageInfo = StudentService.findAllStudentByPage(pageNo, pageSize);
-        request.setAttribute("pageInfo",pageInfo);
-        request.getRequestDispatcher("/views/listStudent.jsp").forward(request,response);
+        request.setAttribute("pageInfo", pageInfo);
+        request.getRequestDispatcher("/views/listStudent.jsp").forward(request, response);
     }
 
 }
