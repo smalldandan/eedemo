@@ -10,4 +10,8 @@ public interface StudentService {
     PageInfo<Student> findAllStudentByPage(int pageNo, int pageSize);
 
     int removeStudentByPrimaryKey(int id);
+
+    Student findStudentById(int id);
+
+    void modifyStudent(Student student4Update);
 }

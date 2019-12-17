@@ -24,5 +24,15 @@ public class StudentServiceImpl implements StudentService {
         return studentDao.deleteStudentByPrimaryKey(id);
     }
 
+    @Override
+    public Student findStudentById(int id) {
+        return studentDao.selectStudentByPrimaryKey(id);
+    }
+
+    @Override
+    public void modifyStudent(Student student4Update) {
+        studentDao.updateStudent(student4Update);
+    }
+
 
 }

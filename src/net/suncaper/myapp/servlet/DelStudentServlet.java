@@ -31,7 +31,6 @@ public class DelStudentServlet extends HttpServlet {
             pageSize = Integer.parseInt(pageSizeStr.trim());
         }
 
-
 //        重定向
 //        重定向
         response.sendRedirect(request.getContextPath()+"/listStudent?pageNo="+pageNo+"&pageSize="+pageSize);

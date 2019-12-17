@@ -12,4 +12,7 @@ public interface StudentDao {
 
     int deleteStudentByPrimaryKey(int id);
 
+    Student selectStudentByPrimaryKey(int id);
+
+    void updateStudent(Student student4Update);
 }

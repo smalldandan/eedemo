@@ -37,7 +37,7 @@ public class StudentDaoImpl implements StudentDao {
 
 
         MyDbUtil.closeConnection();
-        System.out.println(rs);
+//        System.out.println(rs);
 
         return rs;
     }
@@ -51,5 +51,28 @@ public class StudentDaoImpl implements StudentDao {
         System.out.println(i);
         return i;
 
+    }
+
+    @Override
+    public Student selectStudentByPrimaryKey(int id) {
+
+        String sql =" SELECT id,name,stuNo,sex FROM student where id = ? ";
+
+        List<Student> students = MyDbUtil.executeQuery(Student.class, sql, id);
+        return students.size()>0?students.get(0):null;
+
+    }
+
+    @Override
+    public void updateStudent(Student student4Update) {
+        String sql = " update student set name = ?,stuNo = ?,sex = ? where id = ? ";
+        MyDbUtil.executeUpdate(sql,student4Update.getName(),student4Update.getStuNo(),student4Update.getSex(),student4Update.getId());
+    }
+
+    public static void main(String[] args) {
+//        测试用例
+        StudentDao studentDao = new StudentDaoImpl();
+        Student student = studentDao.selectStudentByPrimaryKey(24);
+        System.out.println(student.getName());
     }
 }

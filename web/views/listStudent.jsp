@@ -55,7 +55,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <th>序号</th>
+<%--                                                <th>序号</th>--%>
                                                 <th>姓名</th>
                                                 <th>学号</th>
                                                 <th>性别</th>
@@ -66,17 +66,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <%--@elvariable id="pageInfo" type="net.suncaper.myapp.common.utils.PageInfo"--%>
                                             <c:forEach items="${pageInfo.data}" var="stu" varStatus="status">
                                                 <tr id="${stu.id}">
-                                                    <td>
-                                                            ${status.count}
-                                                    </td>
+<%--                                                    <td>--%>
+<%--                                                            ${status.count}--%>
+<%--                                                    </td>--%>
                                                     <td>
                                                             ${stu.name}
                                                     </td>
                                                     <td>  ${stu.stuNo}</td>
                                                     <td> ${stu.sex}</td>
                                                     <td>
-                                                        <a type="button" class="btn btn-outline-success btn-xs btn-flat">更改</a>
-<%--                                                        <a type="button"  href="${pageContext.request.contextPath}/delStudent?id=${stu.id}&pageNo=${pageInfo.pageNo}&pageSize=10" class="btn btn-outline-danger btn-xs btn-flat">删除</a>--%>
+                                                        <button class="btn btn-outline-success btn-xs btn-flat btn_update">更改</button>
+                                                    <%--<a type="button"  href="${pageContext.request.contextPath}/delStudent?id=${stu.id}&pageNo=${pageInfo.pageNo}&pageSize=10" class="btn btn-outline-danger btn-xs btn-flat">删除</a>&ndash;%&gt;--%>
                                                         <button class="btn btn-outline-danger btn-xs btn-flat btn_del">删除</button>
                                                     </td>
                                                 </tr>
@@ -124,12 +124,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
             $(function () {
                 $(".btn_del").click(function () {
                     var $tr = $(this).parents("tr");
-                    var $tdName = $tr.find("td:eq(1)");
+                    var $tdName = $tr.find("td:eq(0)");
                     var id = $tr.attr("id");
                     var text = "确认要删除 "+$.trim($tdName.html())+" 吗?"
                     if(confirm(text)){
                         window.location.href="${pageContext.request.contextPath}/delStudent?id="+id+"&pageNo=${pageInfo.pageNo}&pageSize=10";
                     }
+                });
+            });
+
+            $(function () {
+                $(".btn_update").click(function () {
+                    var $tr = $(this).parents("tr");
+                    var id = $tr.attr("id");
+                    console.info(id);
+                    window.location.href="${pageContext.request.contextPath}/toupdatestu?id="+id;
+
                 });
             });
         </script>

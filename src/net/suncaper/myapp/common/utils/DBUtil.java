@@ -17,12 +17,12 @@ public class DBUtil {
             Properties properties = new Properties();
             properties.load(inputStream);
             driver = properties.getProperty("db.driver");
-            System.out.println(driver);
+
             url = properties.getProperty("db.url");
             dbUser = properties.getProperty("db.user");
             dbPassword = properties.getProperty("db.password");
-            String mn = properties.getProperty("myname");
-            System.out.println(mn);
+
+
             inputStream.close();
             Class.forName(driver);
         } catch (Exception e) {
