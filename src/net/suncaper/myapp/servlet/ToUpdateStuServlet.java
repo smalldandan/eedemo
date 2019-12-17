@@ -21,7 +21,7 @@ public class ToUpdateStuServlet extends HttpServlet {
         int id = Integer.parseInt(idTxt);
 
         Student student = studentService.findStudentById(id);
-        System.out.println(student);
+//        System.out.println(student);
         request.setAttribute("stu",student);
         request.getRequestDispatcher("/views/showStudent4Update.jsp").forward(request,response);
     }

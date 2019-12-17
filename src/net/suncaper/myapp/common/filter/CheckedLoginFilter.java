@@ -20,7 +20,7 @@ public class CheckedLoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String requestURI = request.getRequestURI();
-        System.out.println(requestURI);
+//        System.out.println(requestURI);
 
         boolean is = false;        //判断URL是否是登陆页面或者静态资源
         String[] exclude = new String[]{"login","css","html","jpg","png","jpeg","bmp","js"};

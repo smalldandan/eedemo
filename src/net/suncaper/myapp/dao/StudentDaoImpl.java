@@ -48,7 +48,7 @@ public class StudentDaoImpl implements StudentDao {
         String sql = "delete from student where id = ?";
         int i = MyDbUtil.executeUpdate(sql, id);
 //        返回值是更新的行数，effect rows
-        System.out.println(i);
+//        System.out.println(i);
         return i;
 
     }

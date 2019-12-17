@@ -77,6 +77,11 @@
                 <a href="#" class="dropdown-item dropdown-footer">这是一个dropdown-footer(a标签)</a>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/logout">
+                注销登录
+            </a>
+        </li>
     </ul>
 </nav>
 <!-- /.navbar -->
